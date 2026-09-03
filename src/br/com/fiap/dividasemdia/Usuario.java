@@ -9,7 +9,7 @@ public class Usuario {
 
     //Construtor com Parâmetros
     public Usuario(Long idUsuario, String nmUsuario, String emailUsuario, String cpfUsuario, String telefoneUsuario, String stConta) {
-        this.idUsuario = this.idUsuario;
+        this.idUsuario = idUsuario;
         this.nome = nome;
         this.email = email;
         this.cpf = cpf;
