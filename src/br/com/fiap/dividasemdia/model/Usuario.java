@@ -1,22 +1,32 @@
-package br.com.fiap.dividasemdia;
+package br.com.fiap.dividasemdia.model;
 
 public class Usuario {
     private Long idUsuario;
     private String nome;
     private String email;
     private String cpf;
+    private String telefone;
     private String statusConta;
 
-    //Construtor com Parâmetros
-    public Usuario(Long idUsuario, String nmUsuario, String emailUsuario, String cpfUsuario, String telefoneUsuario, String stConta) {
-        this.idUsuario = idUsuario;
-        this.nome = nome;
-        this.email = email;
-        this.cpf = cpf;
-        this.statusConta = statusConta;
+    // 1. Construtor sem parâmetros
+    public Usuario() {
     }
 
-    //Getters e Setters
+    // 2. Construtor com todos os 6 parâmetros
+    public Usuario(Long idUsuario, String nmUsuario, String emailUsuario, String cpfUsuario, String telefoneUsuario, String stConta) {
+        this.idUsuario = idUsuario;
+        this.nome = nmUsuario;
+        this.email = emailUsuario;
+        this.cpf = cpfUsuario;
+        this.telefone = telefoneUsuario;
+        this.statusConta = stConta;
+    }
+
+    // Getters e Setters
+    public Long getIdUsuario() {
+        return idUsuario;
+    }
+
     public void setIdUsuario(Long idUsuario) {
         this.idUsuario = idUsuario;
     }
@@ -43,6 +53,14 @@ public class Usuario {
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
 
     public String getStatusConta() {

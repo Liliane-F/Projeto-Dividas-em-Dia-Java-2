@@ -1,4 +1,4 @@
-package br.com.fiap.dividasemdia;
+package br.com.fiap.dividasemdia.model;
 
 public class DividaCartaoCredito extends Divida {
     private double multaAtrasoPercentual;

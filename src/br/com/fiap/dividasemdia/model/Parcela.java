@@ -1,4 +1,4 @@
-package br.com.fiap.dividasemdia;
+package br.com.fiap.dividasemdia.model;
 
 public class Parcela {
     private Long idParcela;
@@ -7,6 +7,9 @@ public class Parcela {
     private double valor;
     private String dataVencimento;
     private String status;
+    
+    //Construtor sem parâmetros
+    public Parcela() {}
 
     public Parcela(Long idParcela, Long idDivida, int numeroParcela, double valor, String dataVencimento, String stParcela) {
         this.idParcela = idParcela;
@@ -14,7 +17,7 @@ public class Parcela {
         this.numeroParcela = numeroParcela;
         this.valor = valor;
         this.dataVencimento = dataVencimento;
-        this.status = stParcela; // Corrigido aqui
+        this.status = stParcela;
     }
 
     public void gerarParcela() {

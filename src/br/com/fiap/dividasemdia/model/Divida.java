@@ -1,39 +1,40 @@
-package br.com.fiap.dividasemdia;
+package br.com.fiap.dividasemdia.model;
 
 public class Divida {
     private Long idDivida;
     private Long idUsuario;
     private double valorOriginal;
-    private String Credor;
+    private String credor;
     private String tipoDivida;
     private double taxaJurosAnual;
     private String status;
 
+    // Construtor sem parâmetros
+    public Divida() {
+    }
 
-    //Construtor que inicializa a dívida genérica
-    public Divida(Long idDivida, Long idUsuario, double valorOriginal, String Credor, String tipoDivida, double taxaJurosAnual, String status ) {
+    // Construtor com 7 parâmetros compatível com o Main
+    public Divida(Long idDivida, Long idUsuario, double valorOriginal, String credor, String tipoDivida, double taxaJurosAnual, String status) {
         this.idDivida = idDivida;
         this.idUsuario = idUsuario;
         this.valorOriginal = valorOriginal;
-        this.Credor = Credor;
+        this.credor = credor;
         this.tipoDivida = tipoDivida;
         this.taxaJurosAnual = taxaJurosAnual;
         this.status = status;
     }
 
-    // Calcula juros por dias de atraso
+    // Calcula juros por dias de atraso (Juros Simples)
     public double calcularTotalComJuros(int diasAtraso) {
         if (diasAtraso <= 0) {
             return this.valorOriginal;
         }
-        //Descobre a taxa de juros por dia
         double taxaDiaria = (this.taxaJurosAnual / 100) / 365;
         double juros = this.valorOriginal * taxaDiaria * diasAtraso;
         return this.valorOriginal + juros;
     }
 
     // Getters e Setters
-
     public Long getIdDivida() {
         return idDivida;
     }
@@ -59,11 +60,11 @@ public class Divida {
     }
 
     public String getCredor() {
-        return Credor;
+        return credor;
     }
 
     public void setCredor(String credor) {
-        Credor = credor;
+        this.credor = credor;
     }
 
     public String getTipoDivida() {

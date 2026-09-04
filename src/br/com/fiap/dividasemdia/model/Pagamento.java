@@ -1,4 +1,4 @@
-package br.com.fiap.dividasemdia;
+package br.com.fiap.dividasemdia.model;
 
 public class Pagamento {
     private Long idPagamento;
@@ -7,6 +7,9 @@ public class Pagamento {
     private String dataPagamento;
     private String formaPagamento;
     private String status;
+
+    //Construtor sem parâmetros
+    public Pagamento() {}
 
     public Pagamento(Long idPagamento, Long idParcela, double valorPago, String dataPagamento, String formaPagamento, String status) {
         this.idPagamento = idPagamento;

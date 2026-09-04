@@ -1,4 +1,4 @@
-package br.com.fiap.dividasemdia;
+package br.com.fiap.dividasemdia.model;
 
 public class DividaFinanciamento extends Divida {
     private double taxaAdministrativaFixa;

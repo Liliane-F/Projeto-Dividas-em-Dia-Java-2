@@ -1,4 +1,4 @@
-package br.com.fiap.dividasemdia;
+package br.com.fiap.dividasemdia.model;
 
 public class Simulacao {
     private Long idSimulacao;
@@ -8,6 +8,9 @@ public class Simulacao {
     private int quantidadeParcelas;
     private double valorParcela;
     private double economiaTotal;
+
+    // Construtor sem paramêtro
+    public Simulacao() {}
 
     // Construtor com paramêtro (inicia economiaTotal com 0.0)
     public Simulacao(Long idSimulacao, Long idUsuario, Long idDivida, double valorDivida, int quantidadeParcelas, double valorParcela) {
