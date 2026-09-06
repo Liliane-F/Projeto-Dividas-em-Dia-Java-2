@@ -8,11 +8,9 @@ public class Usuario {
     private String telefone;
     private String statusConta;
 
-    // 1. Construtor sem parâmetros
     public Usuario() {
     }
 
-    // 2. Construtor com todos os 6 parâmetros
     public Usuario(Long idUsuario, String nmUsuario, String emailUsuario, String cpfUsuario, String telefoneUsuario, String stConta) {
         this.idUsuario = idUsuario;
         this.nome = nmUsuario;
@@ -22,7 +20,6 @@ public class Usuario {
         this.statusConta = stConta;
     }
 
-    // Getters e Setters
     public Long getIdUsuario() {
         return idUsuario;
     }

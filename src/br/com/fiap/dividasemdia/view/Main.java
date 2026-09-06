@@ -1,6 +1,8 @@
 package br.com.fiap.dividasemdia.view;
 
 import br.com.fiap.dividasemdia.model.*;
+import java.util.ArrayList;
+import java.time.LocalDate;
 
 public class Main {
     public static void main(String[] args) {
@@ -23,10 +25,15 @@ public class Main {
         System.out.println("Credor: " + dividaCartao.getCredor() + " (" + dividaCartao.getTipoDivida() + ")");
         System.out.println("Valor Original: R$ " + String.format("%.2f", dividaCartao.getValorOriginal()));
         System.out.println("Taxa Contratual: " + dividaCartao.getTaxaJurosAnual() + "% a.a. | Multa por Atraso: " + dividaCartao.getMultaAtrasoPercentual() + "%");
+
         // Demonstração do polimorfismo com cálculo de atraso
         double totalAtualizadoCartao = dividaCartao.calcularTotalComJuros(15);
         System.out.println("Status: " + dividaCartao.getStatus() + " (15 dias de atraso)");
         System.out.println("Saldo Devedor Atualizado (Juros Compostos + Multa): R$ " + String.format("%.2f", totalAtualizadoCartao));
+
+        double totalPorData = dividaCartao.calcularTotalComJuros(LocalDate.of(2024, 5, 1));
+        System.out.println("Total calculado a partir da data de vencimento: R$ " + String.format("%.2f", totalPorData));
+
         System.out.println("--------------------------------------------------\n");
 
         // 3. Dívida de Financiamento (Tela 'Dashboard' - Financiamento Z)
@@ -65,6 +72,19 @@ public class Main {
         double totalProposta = simulacao.getQuantidadeParcelas() * simulacao.getValorParcela();
         System.out.println("Custo Total Renegociado: R$ " + String.format("%.2f", totalProposta));
         System.out.println("Economia Estimada para o Cliente: R$ " + String.format("%.2f", simulacao.getEconomiaTotal()));
+
+        System.out.println("\n[RESUMO DE TODAS AS DÍVIDAS]");
+        // Lista declarada como Divida (supertipo): mesmo guardando objetos de tipos diferentes,
+        // o Java decide em tempo de execução qual calcularTotalComJuros rodar em cada um (polimorfismo dinâmico)
+        var dividas = new ArrayList<Divida>();
+        dividas.add(dividaCartao);
+        dividas.add(dividaFinanc);
+
+        for (var d : dividas) {
+            System.out.println(d.getCredor() + " (" + d.getTipoDivida() + "): saldo com 15 dias de atraso = R$ "
+                    + String.format("%.2f", d.calcularTotalComJuros(15)));
+        }
+
         System.out.println("\n==================================================");
         System.out.println("      SIMULAÇÃO CONCLUÍDA COM SUCESSO!            ");
         System.out.println("==================================================");

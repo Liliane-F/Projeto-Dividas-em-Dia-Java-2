@@ -1,5 +1,10 @@
 package br.com.fiap.dividasemdia.model;
 
+/**
+ * Subclasse de Divida.
+ * Demonstra herança (extends) e sobrescrita (@Override) de calcularTotalComJuros,
+ * aplicando juros compostos + multa — regra específica de dívida de cartão.
+ */
 public class DividaCartaoCredito extends Divida {
     private double multaAtrasoPercentual;
 
@@ -11,7 +16,7 @@ public class DividaCartaoCredito extends Divida {
         this.multaAtrasoPercentual = multaAtrasoPercentual;
     }
 
-    // Polimorfismo: cálculo com juros compostos e acréscimo de multa
+    // Sobrescreve com juros compostos (mais realista para dívida rotativa)
     @Override
     public double calcularTotalComJuros(int diasAtraso) {
         if (diasAtraso <= 0) {

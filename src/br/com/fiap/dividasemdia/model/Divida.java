@@ -1,6 +1,14 @@
 package br.com.fiap.dividasemdia.model;
 
-public class Divida {
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+
+/**
+ * Superclasse abstrata do domínio de dívidas.
+ * É abstrata porque não faz sentido existir uma "dívida genérica":
+ * toda dívida real é de um tipo concreto (cartão, financiamento etc.).
+ */
+public abstract class Divida {
     private Long idDivida;
     private Long idUsuario;
     private double valorOriginal;
@@ -9,11 +17,9 @@ public class Divida {
     private double taxaJurosAnual;
     private String status;
 
-    // Construtor sem parâmetros
     public Divida() {
     }
 
-    // Construtor com 7 parâmetros compatível com o Main
     public Divida(Long idDivida, Long idUsuario, double valorOriginal, String credor, String tipoDivida, double taxaJurosAnual, String status) {
         this.idDivida = idDivida;
         this.idUsuario = idUsuario;
@@ -24,17 +30,15 @@ public class Divida {
         this.status = status;
     }
 
-    // Calcula juros por dias de atraso (Juros Simples)
-    public double calcularTotalComJuros(int diasAtraso) {
-        if (diasAtraso <= 0) {
-            return this.valorOriginal;
-        }
-        double taxaDiaria = (this.taxaJurosAnual / 100) / 365;
-        double juros = this.valorOriginal * taxaDiaria * diasAtraso;
-        return this.valorOriginal + juros;
+    // Método abstrato: cada subclasse define sua própria fórmula de cálculo de juros (polimorfismo)
+    public abstract double calcularTotalComJuros(int diasAtraso);
+    // Sobrecarga (polimorfismo estático): mesmo nome do método acima, mas recebe uma data
+    // em vez de já saber os dias de atraso. Internamente delega para calcularTotalComJuros(int).
+    public double calcularTotalComJuros(LocalDate dataVencimento) {
+        long diasAtraso = ChronoUnit.DAYS.between(dataVencimento, LocalDate.now());
+        return calcularTotalComJuros((int) diasAtraso);
     }
 
-    // Getters e Setters
     public Long getIdDivida() {
         return idDivida;
     }

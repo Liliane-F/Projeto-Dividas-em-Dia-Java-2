@@ -1,5 +1,10 @@
 package br.com.fiap.dividasemdia.model;
 
+/**
+ * Subclasse de Divida.
+ * Demonstra herança (extends) e sobrescrita (@Override) de calcularTotalComJuros,
+ * usando juros simples + tarifa administrativa fixa — regra específica de financiamento.
+ */
 public class DividaFinanciamento extends Divida {
     private double taxaAdministrativaFixa;
 
@@ -11,13 +16,16 @@ public class DividaFinanciamento extends Divida {
         this.taxaAdministrativaFixa = taxaAdministrativaFixa;
     }
 
-    // Polimorfismo: reaproveita o cálculo de juros simples da mãe e soma a taxa fixa
+    // Sobrescreve com juros simples (diferente do juros compostos do cartão)
     @Override
     public double calcularTotalComJuros(int diasAtraso) {
         if (diasAtraso <= 0) {
             return getValorOriginal();
         }
-        double valorComJurosSimples = super.calcularTotalComJuros(diasAtraso);
+        double taxaDiaria = (getTaxaJurosAnual() / 100) / 365;
+        double juros = getValorOriginal() * taxaDiaria * diasAtraso;
+        double valorComJurosSimples = getValorOriginal() + juros;
+
         return valorComJurosSimples + this.taxaAdministrativaFixa;
     }
 

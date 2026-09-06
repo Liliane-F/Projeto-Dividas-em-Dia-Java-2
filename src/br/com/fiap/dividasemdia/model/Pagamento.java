@@ -8,7 +8,6 @@ public class Pagamento {
     private String formaPagamento;
     private String status;
 
-    //Construtor sem parâmetros
     public Pagamento() {}
 
     public Pagamento(Long idPagamento, Long idParcela, double valorPago, String dataPagamento, String formaPagamento, String status) {
@@ -20,6 +19,7 @@ public class Pagamento {
         this.status = status;
     }
 
+    // Simula o fluxo de estados de um pagamento: pendente -> em processamento -> concluído
     public void processarPagamento() {
         this.status = "EM_PROCESSAMENTO";
     }
@@ -28,7 +28,7 @@ public class Pagamento {
         this.status = "CONCLUIDO";
     }
 
-    // Getters e Setters (Encapsulamento)
+
     public Long getIdPagamento() { return idPagamento; }
     public void setIdPagamento(Long idPagamento) { this.idPagamento = idPagamento; }
 

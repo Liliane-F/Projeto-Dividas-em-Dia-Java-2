@@ -7,8 +7,7 @@ public class Parcela {
     private double valor;
     private String dataVencimento;
     private String status;
-    
-    //Construtor sem parâmetros
+
     public Parcela() {}
 
     public Parcela(Long idParcela, Long idDivida, int numeroParcela, double valor, String dataVencimento, String stParcela) {
@@ -28,7 +27,6 @@ public class Parcela {
         this.status = "PAGA";
     }
 
-    // Getters e Setters (Encapsulamento)
     public Long getIdParcela() { return idParcela; }
     public void setIdParcela(Long idParcela) { this.idParcela = idParcela; }
 

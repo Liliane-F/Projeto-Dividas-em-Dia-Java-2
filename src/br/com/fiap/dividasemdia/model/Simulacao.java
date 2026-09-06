@@ -9,7 +9,6 @@ public class Simulacao {
     private double valorParcela;
     private double economiaTotal;
 
-    // Construtor sem paramêtro
     public Simulacao() {}
 
     // Construtor com paramêtro (inicia economiaTotal com 0.0)
@@ -23,7 +22,6 @@ public class Simulacao {
         this.economiaTotal = 0.0;
     }
 
-    // Método
     public void executarSimulacao() {
         this.economiaTotal = calcularEconomia();
     }
@@ -39,7 +37,6 @@ public class Simulacao {
         return this.economiaTotal;
     }
 
-    // Getters e Setters (Encapsulamento)
     public Long getIdSimulacao() { return idSimulacao; }
     public void setIdSimulacao(Long idSimulacao) { this.idSimulacao = idSimulacao; }
 
